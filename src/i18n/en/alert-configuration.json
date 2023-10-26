@@ -1,0 +1,10 @@
+{
+    "theListOfEmailAddressRecipientsIsRequired": "The list of email address recipients is required",
+    "theListOfEmailAddressRecipientsCanNotBeEmpty": "The list of email address recipients can not be empty",
+    "alertConfigurationNotFound": "Alert not found",
+    "alertConfigurationAlreadyExists": "Alert configuration already exists",
+    "alertConfigurationCreatedSuccessfully": "Alert configuration created successfully",
+    "alertConfigurationsRetrievedSuccessfully": "Alert configuration retrieved successfully",
+    "alertConfigurationHistoriesRetrievedSuccessfully": "Alert configuration histories retrieved successfully",
+    "alertConfigurationUpdatedSuccessfully": "Alert configuration updated successfully"
+}

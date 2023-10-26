@@ -1,0 +1,166 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ClientScope {
+  WEB
+  MOBILE
+  MICROSERVICE
+}
+
+enum ClientStatus {
+  ACTIVE
+  BLOCKED
+  EXPIRED
+}
+
+model Customer {
+  id           Int      @id @default(autoincrement())
+  username     String   @unique @map("username")
+  language     String   @map("language")
+  emailAddress String   @map("email_address")
+  nellysCoinUserId Int      @unique @map("nellys_coin_user_id")
+  status       String   @map("status")
+  type         String   @map("type")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  clients                            Client[]
+  services                           Service[]
+  alertConfigurations                AlertConfiguration[]
+  clientHistoriesCreated             ClientHistory[]             @relation("customer1")
+  clientHistoriesUpdated             ClientHistory[]             @relation("customer2")
+  alertConfigurationHistoriesCreated AlertConfigurationHistory[] @relation("customer3")
+  alertConfigurationHistoriesUpdated AlertConfigurationHistory[] @relation("customer4")
+  serviceHistoriesCreated            ServiceHistory[]            @relation("customer5")
+  serviceHistoriesUpdated            ServiceHistory[]            @relation("customer6")
+
+  @@map("customer")
+}
+
+model Service {
+  id             Int      @id @default(autoincrement())
+  code           String   @unique @map("code")
+  friendlyName   String   @map("friendly_name")
+  description    String   @map("description")
+  maxClientCount Int?     @map("max_client_count")
+  createdBy      Int      @map("created_by")
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  creationDoneBy Customer @relation(fields: [createdBy], references: [id])
+
+  client           Client[]
+  serviceHistories ServiceHistory[]
+  alertConfigs     AlertConfiguration[]
+
+  @@map("service")
+}
+
+model ServiceHistory {
+  id        Int       @id @default(autoincrement())
+  serviceId Int       @map("service_id")
+  createdBy Int       @map("created_by")
+  updatedBy Int?      @map("updated_by")
+  reason    String    @map("reason") @db.Text
+  data      Json?     @map("data")
+  startDate DateTime  @map("start_date")
+  endDate   DateTime? @map("end_date")
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+
+  service        Service   @relation(fields: [serviceId], references: [id])
+  creationDoneBy Customer  @relation(fields: [createdBy], references: [id], name: "customer5")
+  updateDoneBy   Customer? @relation(fields: [updatedBy], references: [id], name: "customer6")
+
+  @@map("service_history")
+}
+
+model Client {
+  id                 Int          @id @default(autoincrement())
+  publicId           String       @unique @map("public_id")
+  friendlyName       String?      @map("friendly_name")
+  secretKey          String       @map("secret_key")
+  scope              ClientScope  @map("scope")
+  serviceId          Int          @map("service_id")
+  shouldExpire       Boolean      @default(true) @map("should_expire")
+  status             ClientStatus @default(ACTIVE) @map("status")
+  wasRegenerated     Boolean      @default(false) @map("was-generated")
+  shouldApplyIPCheck Boolean      @default(false) @map("should_apply_ip_check")
+  ipWhitelist        Json?        @map("ip_white_list")
+  createdBy          Int          @map("created_by")
+  expiresAt          DateTime?    @map("expires_at")
+  createdAt          DateTime     @default(now()) @map("created_at")
+  updatedAt          DateTime     @updatedAt @map("updated_at")
+
+  service        Service  @relation(fields: [serviceId], references: [id])
+  creationDoneBy Customer @relation(fields: [createdBy], references: [id])
+
+  clientHistories ClientHistory[]
+
+  @@map("client")
+}
+
+model ClientHistory {
+  id        Int       @id @default(autoincrement())
+  clientId  Int       @map("client_id")
+  createdBy Int       @map("created_by")
+  updatedBy Int?      @map("updated_by")
+  reason    String    @map("reason") @db.Text
+  data      Json?     @map("data")
+  startDate DateTime  @map("start_date")
+  endDate   DateTime? @map("end_date")
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+
+  client         Client    @relation(fields: [clientId], references: [id])
+  creationDoneBy Customer  @relation(fields: [createdBy], references: [id], name: "customer1")
+  updateDoneBy   Customer? @relation(fields: [updatedBy], references: [id], name: "customer2")
+
+  @@map("client_history")
+}
+
+model AlertConfiguration {
+  id                     Int      @id @default(autoincrement())
+  sendSlackAlert         Boolean  @default(true) @map("send_slack_alert")
+  sendEmail              Boolean  @default(false) @map("send_email")
+  emailAddressRecipients Json?    @map("email_address_recipients")
+  serviceId              Int?     @map("service_id")
+  createdBy              Int      @map("created_by")
+  createdAt              DateTime @default(now()) @map("created_at")
+  updatedAt              DateTime @updatedAt @map("updated_at")
+
+  service        Service? @relation(fields: [serviceId], references: [id])
+  creationDoneBy Customer @relation(fields: [createdBy], references: [id])
+
+  alertConfigurationHistories AlertConfigurationHistory[]
+
+  @@map("alert_configuration")
+}
+
+model AlertConfigurationHistory {
+  id                   Int       @id @default(autoincrement())
+  alertConfigurationId Int       @map("alert_configuration_id")
+  createdBy            Int       @map("created_by")
+  updatedBy            Int?      @map("updated_by")
+  reason               String    @map("reason") @db.Text
+  data                 Json?     @map("data")
+  startDate            DateTime  @map("start_date")
+  endDate              DateTime? @map("end_date")
+  createdAt            DateTime  @default(now()) @map("created_at")
+  updatedAt            DateTime  @updatedAt @map("updated_at")
+
+  alertConfiguration AlertConfiguration @relation(fields: [alertConfigurationId], references: [id])
+  creationDoneBy     Customer           @relation(fields: [createdBy], references: [id], name: "customer3")
+  updateDoneBy       Customer?          @relation(fields: [updatedBy], references: [id], name: "customer4")
+
+  @@map("alert_configuration_history")
+}

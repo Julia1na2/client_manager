@@ -1,0 +1,7 @@
+{
+    "customerNotFound": "Customer not found",
+    "customerWithUsernameAlreadyExists": "A customer with this username already exists",
+    "customersRetrievedSuccessfully": "Customers retrieved successfully",
+    "customerRetrievedSuccessfully": "Customer retrieved successfully",
+    "customerUpdatedSuccessfully": "Customer updated successfully"
+}

@@ -1,0 +1,16 @@
+{
+    "clientWithFriendlyNameAlreadyExists": "Client with this friendlyname already exists",
+    "clientCreatedSuccessfully": "Client created successfully",
+    "clientsRetrievedSuccessfully": "Clients retrieved successfully",
+    "clientNotFound": "Client not found",
+    "clientRetrievedSuccessfully": "Client retrieved successfully",
+    "clientUpdatedSuccessfully" : "Client updated successfully",
+    "theIpWhitelistIsRequired": "The IP whitelist is required",
+    "theExpiringDateIsRequired": "The expiring date is required",
+    "theServiceHasReachedItsMaxClient": "The service has reached its maximum number of clients",
+    "theIPWhiteListCanNotBeEmpty": "The IP whitelist can not be empty",
+    "clientHistoriesRetrievedSuccessfully": "Client histories retrieved successfully",
+    "invalidClientScope": "Invalid client scope",
+    "IPAddressNotFound":  "IP address not found",
+    "theClientHasExpiredCredentials": "The client has expired credencials"
+}

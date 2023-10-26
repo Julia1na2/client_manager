@@ -1,0 +1,11 @@
+{
+    "serviceCreatedSuccessfully": "Service created successfully",
+    "servicesRetrievedSuccessfully": "Services retrieved successfully",
+    "serviceHistoriesRetrievedSuccessfully": "Service histories retrieved successfully",
+    "serviceRetrievedSuccessfully": "Service retrieved successfully",
+    "serviceUpdatedSuccessfully": "Service updated successfully",
+    "serviceWithCodeAlreadyExists": "Service with this code already exists",
+    "serviceNotFound": "Service not found",
+    "serviceWithFriendlyNameAlreadyExists": "A service with this friendly name already exists",
+    "serviceReachedItsMaximumNumberOfClients": "Service reached its number of maximum clients"
+}

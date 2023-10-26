@@ -1,0 +1,7 @@
+{
+    "cutomerNotFound": "Client introuvable",
+    "customerWithUsernameAlreadyExists": "Un client avec ce nom d'utilisateur existe déjà",
+    "customersRetrievedSuccessfully": "Clients récupérés avec succès",
+    "customerRetrievedSuccessfully": "Client récupéré avec succès",
+    "customerUpdatedSuccessfully": "Le client a été mis à jour avec succès"
+}

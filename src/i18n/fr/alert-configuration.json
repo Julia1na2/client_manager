@@ -1,0 +1,10 @@
+{
+    "theListOfEmailAddressRecipientsIsRequired": "La liste des destinataires de l'adresse électronique est obligatoire",
+    "theListOfEmailAddressRecipientsCanNotBeEmpty": "La liste des destinataires de l'adresse électronique ne peut pas être vide",
+    "alertConfigurationNotFound": "Alerte introuvable",
+    "alertConfigurationAlreadyExists": "La configuration de l'alerte existe déjà",
+    "alertConfigurationCreatedSuccessfully": "La configuration d'alerte a été créée avec succès",
+    "alertConfigurationsRetrievedSuccessfully": "La configuration de l'alerte a été récupérée avec succès",
+    "alertConfigurationHistoriesRetrievedSuccessfully": "L'historique de la configuration des alertes a été récupéré avec succès",
+    "alertConfigurationUpdatedSuccessfully": "La configuration de l'alerte a été mise à jour avec succès"
+}

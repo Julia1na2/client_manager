@@ -1,0 +1,16 @@
+{
+    "clientWithFriendlyNameAlreadyExists": "Le client avec ce nom d'ami existe déjà",
+    "clientCreatedSuccessfully": "Client créé avec succès",
+    "clientsRetrievedSuccessfully": "Clients récupérés avec succès",
+    "clientNotFound": "Client introuvable",
+    "clientRetrievedSuccessfully": "Client récupéré avec succès",
+    "clientUpdatedSuccessfully": "Le client a été mis à jour avec succès",
+    "theIpWhitelistIsRequired": "La liste blanche d'adresses IP est nécessaire",
+    "theExpiringDateIsRequired": "la date d'expiration est requise",
+    "theServiceHasReachedItsMaxClient": "Le service a atteint son nombre maximum de clients",
+    "theIPWhiteListCanNotBeEmpty": "La liste blanche d'adresses IP ne peut pas être vide",
+    "clientHistoriesRetrievedSuccessfully": "L'historique des clients a été récupéré avec succès",
+    "invalidClientScope": "Champ d'application non valide",
+    "IPAddressNotFound": "Adresse IP non trouvée",
+    "theClientHasExpiredCredentials": "Les informations d'identification du client ont expiré"
+}

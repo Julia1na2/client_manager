@@ -1,0 +1,5 @@
+{
+  "serverError": "Un problème s'est produit. Veuillez réessayer plus tard ou contacter le service d'assistance à l'adresse support@ejara.africa",
+  "unauthorizedAction": "Vous n'êtes pas autorisé à effectuer cette action. Veuillez contacter l'administrateur.",
+  "missingParams": "Il manque des paramètres importants."
+}

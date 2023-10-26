@@ -1,0 +1,5 @@
+{
+  "serverError": "Something went wrong. Please try again later or contact support at support@ejara.africa",
+  "unauthorizedAction": "You are not authorized to perform this action. Please contact the admin.",
+  "missingParams": "Some important params are missing."
+}
